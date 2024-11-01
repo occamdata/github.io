@@ -1,21 +1,170 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-    <title>나의 첫 웹페이지</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전자카드</title>
     <style>
+        /* 기본 스타일 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: '맑은 고딕', sans-serif;
-            margin: 0;
-            padding: 20px;
         }
-        h1 {
-            color: #333;
+
+        /* 헤더 스타일 */
+        .header {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 검색창 스타일 */
+        .search-container {
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #2760d8;
+            border-radius: 20px;
+        }
+
+        /* 카드 그리드 스타일 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            border: 1px solid #eee;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* 배너 섹션 */
+        .banner-section {
+            background-color: #1a1b3a;
+            color: white;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        /* 서비스 아이콘 그리드 */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .service-item {
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 10px;
+        }
+
+        /* 하단 네비게이션 */
+        .bottom-nav {
+            display: flex;
+            justify-content: space-around;
+            padding: 15px;
+            background-color: #f8f8f8;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .bottom-nav-item {
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <h1>환영합니다!</h1>
-    <p>이것은 제 첫 웹페이지입니다.</p>
+    <header class="header">
+        <nav class="nav">
+            <img src="logo.png" alt="로고">
+            <div class="menu">
+                <a href="#">여행</a>
+                <a href="#">특가</a>
+                <a href="#">공동구매</a>
+                <a href="#">기프트</a>
+                <a href="#">서비스</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="search-container">
+        <input type="search" class="search-box" placeholder="배송, 쿠폰, 이벤트를 검색해보세요">
+    </div>
+
+    <div class="card-grid">
+        <!-- 카드 이미지들 -->
+        <div class="card">
+            <img src="card1.jpg" alt="Point Plan">
+        </div>
+        <div class="card">
+            <img src="card2.jpg" alt="PASS">
+        </div>
+        <div class="card">
+            <img src="card3.jpg" alt="이벤트 카드">
+        </div>
+        <!-- 추가 카드들... -->
+    </div>
+
+    <div class="banner-section">
+        <h2>전자카드 이용의 특별한 가치발견!</h2>
+        <!-- 배너 내용 -->
+    </div>
+
+    <div class="service-grid">
+        <div class="service-item">
+            <img src="icon1.png" alt="서비스1">
+            <p>단체주문/배송</p>
+        </div>
+        <div class="service-item">
+            <img src="icon2.png" alt="서비스2">
+            <p>제작/발송</p>
+        </div>
+        <div class="service-item">
+            <img src="icon3.png" alt="서비스3">
+            <p>상품권/기프트</p>
+        </div>
+        <div class="service-item">
+            <img src="icon4.png" alt="서비스4">
+            <p>서비스안내</p>
+        </div>
+    </div>
+
+    <nav class="bottom-nav">
+        <div class="bottom-nav-item">홈</div>
+        <div class="bottom-nav-item">배송조회</div>
+        <div class="bottom-nav-item">카테고리</div>
+        <div class="bottom-nav-item">마이페이지</div>
+    </nav>
 </body>
 </html>
