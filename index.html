@@ -1,54 +1,1294 @@
-<!-- 1. 메인 검색 영역 수정 -->
-<div class="main_search">
-    <!-- PC용 -->
-    <div id="searchWideWrap" class="search-wide-wrap">
-        <div class="input_wrap pc_only">
-            <button type="button" id="btnMainSearchPc" class="main-search-btn" aria-label="검색 팝업 열기" onclick="ui.quickSrch.open('#totalSrchQuck')"></button>
-            <!-- form 사용하지 않음 -->
-            <form action="javascript:void(0);" aria-hidden="true">
-                <label for="mainSearch_pc">
-                    <span class="blind">검색</span>
-                </label>
-            </form>
-        </div>
-    </div>
 
-    <!-- Mobile용 -->
-    <div id="searchMinWrap" class="search-min-wrap">
-        <div class="input_wrap mo_only">
-            <button type="button" id="mainSearch_mo" class="main-search-btn js_autoComplete" aria-label="검색 팝업 열기"></button>
-        </div>
-    </div>
+<!DOCTYPE html>
+<html lang="ko" class="rv-22 main-page"> <!-- 221123 .main-page 팝업시 움직이는거 없애려고 추가함 --> 
+<head>
+	<title>신한카드</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+	<link rel="canonical" href="https://www.shinhancard.com" />
+	<meta name="description" content="고객에게 딱 맞는 라이프스타일, 신한카드만의 초개인화 서비스를 이용해 보세요. 새로운 세상을 여는 신한카드와 함께 나에게 꼭 맞는 금융생활을 누려보세요. " />
+	<meta name="keywords" content="신한카드, shinhancard, 신한플레이, pLay" />
+	<meta property="og:url" content="https://www.shinhancard.com">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="신한카드">
+	<meta property="og:description" content="고객에게 딱 맞는 라이프스타일, 신한카드만의 초개인화 서비스를 이용해 보세요. 새로운 세상을 여는 신한카드와 함께 나에게 꼭 맞는 금융생활을 누려보세요.">
+	<meta property="og:image" content="https://www.shinhancard.com/pconts/images/common/share/img_share01.png">
+	<meta property="og:site_name" content="신한카드" />
+    <script src="/pconts/js/externalLib.css.js?ver=211603"></script>
+    <script src="/pconts/js/shinhancard.css.js?ver=211603"></script>
+    <script src="/pconts/js/externalLib.js?ver=211603"></script>
+    <script src="/pconts/js/shinhancard.ui.js?ver=211603"></script>
+    <script src="/logic/js/mob/cmm/pesn-common.js?ver=211603"></script>
+	<link rel="stylesheet" href="/pconts/css/shcard/shc-main.css?ver=211603" media="all"> 
+	<script src="/pconts/js/main_news.js?ver=211603"></script>
+    <style>
+        #shcMainSec1{background:none;animation:none;border-top: 12px solid #eee;}
+        #shcMainSec1 .m-article{padding-bottom:30px;padding-top:30px;}
+      	#shcMainSec2 .m-article{padding:0 24px 30px;}
+        .m-section1{background:none;}
+        .m-card-banner-sec{display:none;}
+        #shcMainSec3 .m-article{padding-top:95px;}
+      	.app_pLay #shcMainSec3 .m-article{padding-top:0px;}
+        .main-fav-swiper .swiper-container{box-shadow:none;}
+      	@media screen and (min-width: 1100px){
+            #shcMainSec1{border-top:none;}
+            #shcMainSec1 .m-article{padding-bottom:60px;padding-top:60px;}
+            #shcMainSec1:before{content: '';max-width: 1200px;height: 1px;position: absolute;top: 0;left: 50%;transform: translateX(-50%);width: 100%;background: #eee;}
+            #shcMainSec2 .m-article{padding:0 0 60px;}
+            #shcMainSec3 .m-article{padding-top:184px;padding-bottom: 50px;}
+        }
+      	@media screen and (max-width: 1100px){
+      		.shc-index #header .gnb_wrap{display:none;}  
+            body.app_pLay .shc-index #header .gnb_wrap{display:block;}    
+      		.shc-index #container{padding-top:60px;}
+      		.has_eventTopBnr .main #container{padding-top:118px;}
+      	}
+    </style>
+	<style>
+		/* 2024 검색 리뉴얼로 추가된 css */
+		/* 메인 바닥 페이지 검색버튼의 마크업 위치 변경되면서 디자인 맞춤 */
+		.shc-index.renew2024 #searchWideWrap {display:block;width:700px;height:64px;margin:60px auto 0;}
+		.shc-index.renew2024 #searchMinWrap {display:none;}
+		.shc-index.renew2024 .main_search .main-search-btn {position:initial;top:auto;left:auto;width:100%;height:64px;padding:0 0 0 18px;border:2px solid #486eff;background:url(/pconts/images/shcard/ico-72-src2.png) no-repeat calc(100% - 10px) center / 32px 32px;font-size:20px;color:#888;box-shadow:6px 6px 13px -5px rgba(0, 0, 0, 0.15);border-radius:8px;text-align:left;}
+		.shc-index.renew2024 .main_search #searchWideWrap .main-search-btn {display:block !important;}
+		
+		/* #shcMainSec3 여백 재설정 */
+		.shc-index.renew2024 #shcMainSec3 .m-article {padding-top:60px;}
+	
+		/* 메인 피씨 검색 영역 오픈 시 - quickSrch_inner 위치값 재설정 */
+		.shc-index.renew2024.pc-search-on .quickSrch_inner {/*top:190px;*/top:172px;padding:20px 0 0;}
+		.shc-index.renew2024.pc-search-on .quickSrch_inner .quickSrch {width:100%;}
+	
+		/* 메인 피씨 검색 영역 오픈 시 - 기존에 사용하던 인풋 영역 숨김처리 후 헤더에서 사용하는 인풋 영역 공통으로 사용 */
+		.shc-index.renew2024 .main_search #searchWideWrap form {position:fixed;top:-9999px;left:-9999px;}
+	
+		/* 메인 피씨 검색 영역 오픈 시 - .srch_input_wrap 공통영역으로 사용하기 위해 block 처리 */
+		.shc-index.renew2024.pc-search-on .quickSrch_wrap.is_acOnly .srch_input_wrap {display:block !important;}
+	
+		/* 닫을 때 삐걱거림이 있어서 맞추기 위한 용도 */
+		.shc-index.renew2024 .quickSrch_inner {top:172px;}
+		.shc-index.renew2024 .quickSrch_wrap.quickSrch2024.is_acOnly .quickSrch_inner {padding-top:82px;}
+		.shc-index.renew2024.pc-search-on .quickSrch_wrap.quickSrch2024 .quickSrch_inner {padding-top:20px;}
+	
+		@media screen and (min-width: 1024px) and (max-width:1100px) {
+			/* 검색팝업 오픈 시 바닥 검색버튼 숨기기 */
+			.shc-index.renew2024.pc-search-on #quickSrch {z-index:62;}
+			.shc-index #container {padding-top:98px;}
+			.pc .quickSrch .srch_input_wrap .btn_back {display:block;}
+			.shc-index.renew2024.pc-search-on .autoComplete_wrap .ac_scroll {max-height:inherit;}
+		}
+	
+		@media only screen and (max-width: 1100px) {
+			/* 메인 바닥 페이지 검색버튼의 마크업 위치 변경되면서 디자인 맞춤 */
+			.shc-index.renew2024 #searchWideWrap {display:none;}
+			.shc-index.renew2024 #searchMinWrap {display:block;padding:20px 24px;border-top:1px solid #eee;}
+			.shc-index.renew2024 #searchMinWrap .main-search-btn {height:54px;padding-left:13px;background-size:24px;box-shadow:1px 1px 13px 0px rgba(0, 0, 0, 0.15);font-size:16px;}
+	
+			/* #shcMainSec3 여백 재설정 */
+			.shc-index.renew2024 #shcMainSec3 .m-article {padding-top:0}
+	
+			/* 메인 모바일 검색 영역 오픈 시 - quickSrch_inner 위치값 재설정 */
+			.shc-index.renew2024.pc-search-on .quickSrch_inner {top:0 !important;padding-top:16px;}
+	
+			/* 닫을 때 삐걱거림이 있어서 맞추기 위한 용도 */
+			.shc-index.renew2024 .quickSrch_wrap.quickSrch2024.is_acOnly .quickSrch_inner {padding-top:16px;}
+		}
+	</style>
+</head>
+<body>
+<!-- skipNavi -->
+<div id="skipNavi">
+    <a href="#container">본문 바로가기</a>
 </div>
+<!-- //skipNavi -->
+<!-- 221123 검색 리뉴얼로 .renew 추가함 -->
+<!-- 240819 검색 리뉴얼로 .renew를 renew2024로 변경 -->
+<div id="wrap" class="main SH_submain shc-index renew2024">
+    <!-- header -->
+	<header id="header" data-bind-include="cmmHeader" data-head-type="main" data-head-title="메인">
+		<div class="header_inner">
+			<!-- 헤드배너 삽입될 공간 -->
+          <div id="hTopBanner">
+              <!-- 230127 띠배너 어드민 -->
+              <div id="mHeadBannerSwiper">
+                <div class="event_bnr event_subTop img_right">
+                    <div class="event_inner" >
+                        <div class="ly_inner">
+                            <div class="swiper-container">
+                                <ul class="swiper-wrapper"  id="topBannerSwiper">
+                                    
+                                </ul>
+                            </div>
+                            <button type="button" class="swiper-button-prev" role="button"><span class="blind">이전</span></button>
+                            <button type="button" class="swiper-button-next" role="button"><span class="blind">다음</span></button>
+                            <div class="swiper-controls">
+                                <div class="swiper-pagination"></div>
+                                <button type="button" class="swiper-button-play"><span class="blind">재생</span></button>
+                                <button type="button" class="swiper-button-pause"><span class="blind">정지</span></button>
+                            </div>
+                            <div class="event_close_wrap" style="display:none;">
+                                <label for="todayCloseBnr" class="event_close_check" style="">
+                                    <input type="checkbox" id="checkTopBnr1">
+                                    <span>오늘 하루 열지 않기</span>
+                                </label>
+                                <button type="button" class="event_close"><span>닫기</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                </div>
+                <script>
+                // S230309 추가
+                $(function () {
+	                var util = $svc.get('util'); 
+					
+	                setTimeout(function () {
+	                    $.getJSON('/logic/json/eventBanner.json', function (resData) {
+	                        var res = resData;
+	                        var data = res.root.evtBnn;
+	                        var banner = [];
+	                        
+	                        for(var i=0; i<data.length; i++) {
+	                        	var event = data[i];
+	                        	var bannerDetailArr = event.EHPGA0065 || [];
+	                        	
+	                        	var xpoTrmFcd = event.hpgBnnXpoTrmFcd || '02'	// 노출구분코드(01:기간형, 02:상시형, 03:crm)
+	                			if(xpoTrmFcd == '01'){
+	                				if(util.getDiffDay(util.formatDate(new Date(), 'yyyyMMdd'), event.hpgBnnBulEdd) < 0){
+	                					continue;
+	                				}
+	                				if(util.getDiffDay(event.hpgBnnBulStd, util.formatDate(new Date(), 'yyyyMMdd')) < 0){
+	                					continue;
+	                				}
+	                			}
+	                        	
+	                        	for(var j=0; j<bannerDetailArr.length;j++) {
+	                        		var bannerChild = event.EHPGA0065[j];
+	                        		var bannerAreaCd = bannerChild.hpgBnnXpoTrrCd;
+	                        		var bannerSubAreaCd = util.trim(bannerChild.hpgBnnXpoBneCd);
+	                        		
+	                        		if(bannerAreaCd == '03' && bannerSubAreaCd == '00') { // 탑 배너 && 메인
+	                        			event.EHPGA0065[j].hpgBnnBgrOloVl = event.hpgBnnBgrOloVl;
+	                        			event.EHPGA0065[j].hpgBnnMovUrlAr = event.hpgBnnMovUrlAr;
+	                        			event.EHPGA0065[j].hpgBnnTarSmmCcd = event.hpgBnnTarSmmCcd;
+	                        			event.EHPGA0065[j].hpgBnnTilNm = event.hpgBnnTilNm;
+	                        			event.EHPGA0065[j].hpgBnnSmrTt = event.hpgBnnSmrTt;
+	                        			banner.push(event.EHPGA0065[j]);
+	                        		}
+	                        	}
+	                        }
+	                        
+	                        banner.sort(function(a, b) {
+	                        	return a.hpgBnnXpoPryRk - b.hpgBnnXpoPryRk
+	                        });
+	                	    
+	                	    var html = "";
+	                        for(var i=0; i<banner.length;i++) {
+	                        	html += '<li class="swiper-slide" data-color="'+util.trim(banner[i].hpgBnnBgrOloVl || '#fffffff')+'"><div class="event_cont">';
+                            	html += '<a href="javascript:;" class="link" onclick="goEventLink(\''+util.trim(banner[i].hpgBnnMovUrlAr+'\'' || 'javascript:;')+', '+util.trim(banner[i].hpgBnnTarSmmCcd || '')+')" >';
+                            	html += '<strong class="tit">'+util.trim(banner[i].hpgBnnTilNm || '')+'</strong>';
+                            	html += '<em class="txt"><span>'+util.trim(banner[i].hpgBnnSmrTt || '')+'</span></em>';
+                            	html += '<span class="img" aria-hidden="true"></span></a></div></li>';
+	                        }
+	                        
+	                        $("#topBannerSwiper").append(html);
 
-<!-- 2. 스타일 추가 -->
+							//S230310 추가
+							setTimeout(function(){
+								var eleContainer = '.event_subTop';
+								if ($(eleContainer+' .swiper-slide').length > 1){
+									eventTopSwiper = new Swiper(eleContainer+' .swiper-container', {
+										autoplay: { 
+											delay: 4000,
+											disableOnInteraction: false
+										},
+										effect: 'fade',
+										speed: 500,
+										loop: true,
+										resistanceRatio: 0,
+										watchSlidesVisibility: true,
+										navigation: {
+											nextEl: eleContainer+' .swiper-button-next',
+											prevEl: eleContainer+' .swiper-button-prev',
+										}, 
+										pagination: {
+											el: eleContainer+' .swiper-pagination',
+											type: 'fraction'
+										},
+										on: {
+											init: function(){ 
+												$('.event_bnr .event_inner').css('background-color',$('.swiper-slide-active').attr('data-color'))
+												ui.swiperAccess($('.event_mainVisual .swiper-container'));
+											},
+											slideChangeTransitionStart: function(){ 
+												$('.event_bnr .event_inner').css('background-color',$('.swiper-slide-active').attr('data-color'))
+												ui.swiperAccess($(eleContainer+' .swiper-container'));
+											},
+										}
+								
+									});
+							
+									$(document).off('click.subTopPause').on('click.subTopPause', eleContainer+' .swiper-button-pause', function () {
+										$(this).closest('.swiper-controls').addClass('is_stoped').removeClass('is_played');
+										$(eleContainer+' .swiper-button-play').focus();
+										eventTopSwiper.autoplay.stop();
+									});
+									$(document).off('click.subTopPlay').on('click.subTopPlay', eleContainer+' .swiper-button-play', function () {
+										$(this).closest('.swiper-controls').addClass('is_played').removeClass('is_stoped');
+										$(eleContainer+' .swiper-button-pause').focus();
+										eventTopSwiper.autoplay.start();
+									});
+									$(eleContainer).removeClass('no_swiper');
+								} else {
+									$(eleContainer).addClass('no_swiper');
+								}
+							
+							},400);
+							//E230310 추가
+	                    })
+	                }, 200)
+	            })
+	                    
+	            function trim(t) {
+	            	return t.replace(/^\s+|\s+$/g, '');
+	            }
+
+                // E230309 추가
+                
+
+                //$('body').addClass('has_eventTopBnr')
+                
+                var self = this;
+                $(document).off('click.eventTopBnr').on('click.eventTopBnr', '.event_subTop .event_close', function(e){
+                    $('body.has_eventTopBnr').removeClass('has_eventTopBnr');
+                    $(this).closest('.event_subTop').one('transitionend', function(){
+                        if ($('body').hasClass('has_eventTopBnr') == false){
+                            $(this).closest('.event_subTop').hide();
+                            $(window).scroll();
+                            topBnrLS();
+                        }
+                    });
+                });
+                
+                //localStorage
+                function setTopBnrLS(a,b){
+                    localStorage.setItem(a,b);
+                    //console.log('setTopBnrLS : ' + a +' / '+b)
+                }
+                
+                function delTopBnrLS(a){
+                    localStorage.removeItem(a);
+                    
+                }
+                
+                function getTopBnrLS(a){
+                    return localStorage.getItem(a);
+                    //console.log('getTopBnrLS')
+                }
+                
+                function checkTopBnrLS(){
+                    var showDate= new Date();
+                    var getDate= getTopBnrLS('topBnrSetDate_m01')
+                    var CompareDate = new Date(getDate);	
+                    if(getDate == undefined || getDate == null || CompareDate.getTime() <= showDate.getTime()){
+                        
+                    }else{
+                        $('body').removeClass('has_eventTopBnr');
+                        $('.event_subTop').hide();
+                    }
+                    //console.log("checkTopBnrLS 설정시간 : " + CompareDate + CompareDate.getTime() +"\n현재시간 : " +showDate + showDate.getTime())
+                }
+                
+                function topBnrLS(){
+                    if(document.getElementById('checkTopBnr1').checked == true){
+                        var showDate = new Date();
+                        showDate.setDate(showDate.getDate()+2);
+                        setTopBnrLS('topBnrSetDate_m01',showDate);
+                    }
+                    //console.log('topBnrLS')
+                }
+                setTimeout(function(){
+                    if ($('.event_subTop .swiper-slide').length > 0){
+                        $('body').addClass('has_eventTopBnr');
+                  		$('.event_subTop .event_close_wrap').show();
+                    }
+                    checkTopBnrLS()
+                },600);
+            </script>
+          <!-- //230127 띠배너 어드민 -->
+
+          </div>
+			<!-- //헤드배너 삽입될 공간 -->
+			<div class="header_top">
+				<div class="header_util">
+					<div class="inside_heading">
+						<ul class="dep1">
+							<li><a href="#" class="text_black wgt_md" role="button"><span>개인</span></a></li>
+							<li><a href="#" role="button" data-plugin-click="gotoLink('corp')" title="새창열림"><span>법인</span></a></li>
+							<li><a href="#" role="button" data-plugin-click="gotoLink('store')" title="새창열림"><span>가맹점</span></a></li>
+						</ul>
+						<ul class="dep1">
+							<li class="dep2">
+								<button type="button" class="dropdown" title="패밀리사이트 목록 팝업열기"><span>마이카</span></button>
+								<div class="dropdown_menu hide">
+									<a class="btn_family" href="#" role="button" data-plugin-click="gotoLink('mycar')" title="새창 열림"><span>마이카</span></a><!-- 웹접근성 2024 새창안내추가 -->
+									<a class="btn_family" href="#" role="button" data-plugin-click="gotoLink('allthat')" title="새창 열림"><span>올댓쇼핑</span></a><!-- 웹접근성 2024 새창안내추가 -->
+									<a class="btn_family" href="#" role="button" data-plugin-click="gotoLink('arumin')" title="새창 열림"><span>신한아름인</span></a><!-- 웹접근성 2024 새창안내추가 -->
+									<a class="btn_family" href="#" role="button" data-plugin-click="gotoLink('bigdata')" title="새창 열림"><span>DataBada</span></a><!-- 웹접근성 2024 새창안내추가 -->
+									<a class="btn_family" href="#" role="button" data-plugin-click="gotoLink('shinhanbank')" title="새창 열림"><span>신한은행</span></a><!-- 웹접근성 2024 새창안내추가 -->
+									<button class="btn_up_close" type="button"><span class="blind">팝업닫기</span></button>
+								</div>
+							</li>
+						</ul>
+					</div>
+
+					<div class="inside_body">
+						<!-- 로그인 전 -->
+						<div class="logout_area clearfix" data-plugin-visible="login!='Y'">
+							<a class="btn_login" href="#" data-plugin-click="mMenu.login()" role="button"><span>로그인</span></a>
+							<a class="btn_join" href="/mob/MOBFM003N/MOBFM003C01.shc" role="button"><span>회원가입</span></a>
+							<a class="btn_find" href="/mob/MOBFM021N/MOBFM021C01.shc" role="button"><span>아이디찾기</span></a>
+							<a class="btn_pro" href="/pconts/html/helpdesk/prdNotice/MOBFM12450/MOBFM12450R01.html" role="button"><span>상품공시실</span></a>
+							<a class="btn_consumer" href="/pconts/html/helpdesk/consumer/MOBFM635/MOBFM635R01.html" role="button"><span>금융소비자보호포털</span></a>
+						</div>
+						<!-- // 로그인 전 -->
+
+						<!-- 로그인 후 -->
+						<div class="login_area clearfix" data-plugin-visible="login=='Y'">
+							<!-- 2023-08-28 -->
+        <div class="user_text color_dark">
+            <span class="wgt_md" data-plugin-text="userName">김신한</span>님!
+        </div>
+        <div class="user_time time-tooltip">
+            <span class="timer">
+                <button type="button" class="underline btn_tooltip userTime_btn" aria-expanded="false" title="툴팁보기"><span class="hidden-text">남은 로그인 시간</span><span id="logoutTime">08:19</span></button>
+            </span>
+            <!-- 로그인 시간 연장 툴팁  -->
+            <div id="loginTimeExtTooltip" class="tooltip_wrap dx-tooltip-wrap userTime_tooltip" role="tooltip">
+                <article class="tooltip_box tooltip_type01">
+                    <div class="tooltip_cont">
+                        <div class="time-extend">
+                          	<span class="blind">남은 로그인 시간</span>
+                            <span class="time" id="logoutTimeTooltip">09:23</span>
+                            <button type="button" class="underline" data-plugin-click="mMenu.extendLogoutTime()"><span>연장하기</span></button>
+                        </div>
+                        <div class="recent-date-text">
+                            최근접속 <span data-plugin-text="psnMsg.loginTime">2023.08.28 18:12</span>
+                        </div>
+                    </div>
+                    <button type="button" class="userSate_close"><span>툴팁닫기</span></button>
+                </article>
+            </div>
+            <!-- //로그인 시간 연장 툴팁  -->
+        </div>
+        <!-- //2023-08-28 -->
+							<a href="#" class="btn_logout" data-plugin-click="mMenu.logout()" role="button"><span>로그아웃</span></a>
+							<a href="/pconts/html/helpdesk/prdNotice/MOBFM12450/MOBFM12450R01.html" class="btn_pro" role="button"><span>상품공시실</span></a>
+							<a class="btn_consumer" href="/pconts/html/helpdesk/consumer/MOBFM635/MOBFM635R01.html" role="button"><span>금융소비자보호포털</span></a>
+						</div>
+						<!-- //로그인 후 -->
+					</div>
+				</div>
+			</div>
+			<div class="header_body">
+				<div class="body_inner">
+					<div class="head_title">
+						<p class="inside_title">
+							<a href="javascript:;" class="logo" role="button" data-plugin-click="mMenu.goHome()">Shinhancard</a>
+						</p>
+					</div>
+					<!-- 디폴트헤더-->
+					<div class="gnb_wrap">
+						<div class="gnb_navi new_gnb_navi clearfix gnb_fulldown">
+							<nav class="nav_area swiper-container">
+								<ul class="dep1 swiper-wrapper" id="gnbUl">
+								</ul>
+							</nav>
+						</div>
+					</div>
+					<div class="util_wrap" data-plugin-visible="!isSpay">
+						<!-- 메인 로그인 버튼 추가 -->
+						<div class="index-log-sec">
+							<div class="logout_area clearfix" data-plugin-visible="login!='Y'" style="">
+								<button type="button" class="btn_login" data-plugin-click="mMenu.login()"><span>로그인</span></button>
+							</div>
+							<!-- // 로그인 전 -->
+							<!-- 로그인 후 -->
+							<div class="login_area clearfix" data-plugin-visible="login=='Y'" style="display: none;">
+                              <!-- 2023-08-28 모바일 -->
+    <div class="user_time time-tooltip">
+        <span class="timer">
+            <button type="button" class="underline btn_tooltip font_sm userTime_btn" aria-expanded="false" title="툴팁보기"><span class="hidden-text">남은 로그인 시간</span><span id="logoutTimeMo">08:19</span></button>
+        </span>
+        <!-- 로그인 시간 연장 툴팁  -->
+        <div id="loginTimeExtMoTooltip" class="tooltip_wrap dx-tooltip-wrap userTime_tooltip" role="tooltip">
+            <article class="tooltip_box tooltip_type01">
+                <div class="tooltip_cont">
+                    <div class="time-extend">
+                      	<span class="blind">남은 로그인 시간</span>
+                        <span class="time" id="logoutTimeMoTooltip" role="text">09:23</span>
+                        <button type="button" class="underline" data-plugin-click="mMenu.extendLogoutTime()"><span>연장하기</span></button>
+                    </div>
+                    <div class="recent-date-text">
+                        최근접속 <span data-plugin-text="psnMsg.loginTime">2023.08.28 18:12</span>
+                    </div>
+                </div>
+                <button type="button" class="userSate_close"><span>툴팁닫기</span></button>
+            </article>
+        </div>
+        <!-- //로그인 시간 연장 툴팁  -->
+    </div>
+    <!-- //2023-08-28 모바일 -->
+								<button type="button" class="btn_login" data-plugin-click="mMenu.logout()"><span>로그아웃</span></button>
+							</div>
+							<!-- //로그인 후 -->
+						</div>
+						<!-- //메인 로그인 버튼 추가 -->
+						<button type="button" class="btn_ico_search" data-plugin-visible="isSearch"
+							data-plugin-click="srch.go()"><span>전체검색</span></button>
+						<button type="button" class="btn_ico_all_menu fullMenu_opener" aria-controls="fullMenuWrap" title="팝업열기"
+							data-plugin-click="mMenu.open()" data-plugin-disabled="!menuReady">
+							<span><span class="top"></span><span class="middle"></span><span class="bottom"></span><span
+									class="blind">전체메뉴</span></span>
+						</button>
+					</div>
+				</div>
+				
+				<!-- 2022-07 최근이용메뉴 추가 -->
+				<div class="gnb-fav-menu">
+					<div class="inner">
+						<div class="tit">최근 이용 메뉴</div>
+						<!-- 로그인 전 또는 최근 이용메뉴가 없을시 -->
+						<div class="fav-text1" id="gnbFavSwiper1NoLogin" style="display:none;">로그인하고 최근 이용한 메뉴를 확인해 보세요.</div>
+						<div class="fav-text1" id="gnbFavSwiper1NoData" style="display:none;">최근 이용한 메뉴가 없어요.</div>
+						<!-- // 로그인 전 또는 최근 이용메뉴가 없을시 -->
+						<!-- 로그인 후 최근 이용메뉴 있을 시 -->
+						<div id="gnbFavSwiper1" class="gnb-fav-swiper" style="display:none;">
+							<button type="button" class="swiper-button-prev" tabindex="0" role="button"  aria-disabled="true"><span class="blind">이전</span></button>
+							<div class="swiper-container">
+								<ul class="swiper-wrapper" id="gnbFavSwiper1Ui">
+								</ul>
+							</div>
+							<button type="button" class="swiper-button-next" tabindex="0" role="button" aria-disabled="false"><span class="blind">다음</span></button>
+						</div>
+						<!-- //로그인 후 최근 이용메뉴 있을 시 -->
+					</div>
+				</div>
+			</div>
+			<!-- mobile subpage  -->
+			<div class="header_mobile">
+				<div class="mobile_inner">
+					<button type="button" class="btn_prev" data-plugin-click="back()"><span class="blind">이전</span></button>
+					<div class="mobile_title_wrap">
+						<h3 class="mobile_title"></h3>
+					</div> 
+					 <div class="util_wrap"  data-plugin-visible="!isSpayAndisChatbotMobileWeb">
+						<button type="button" class="btn_ico_search" data-plugin-visible="isSearch" data-plugin-click="srch.go()"><span>전체검색</span></button>
+						<button type="button" class="btn_ico_all_menu fullMenu_opener" aria-controls="fullMenuWrap" title="팝업열기" data-plugin-click="mMenu.open()" data-plugin-disabled="!menuReady">
+							<span><span class="top"></span><span class="middle"></span><span class="bottom"></span><span class="blind">전체메뉴</span></span>
+						</button>
+					</div>
+								
+				</div>
+			</div>
+		</div>
+		<!-- Gnb Sub -->
+		<div id="gnbSubWrap" class="gnbSub_wrap" aria-hidden="true">
+			<div class="gnbSub_inner"></div>
+			<div class="gnbSub_dimmer"></div>
+			<!-- <script>$(function(){ ui.pageLoad('#gnbSubWrap', '/prjconts/html/guide/layout_gnbmenu_all.html'); });</script> -->
+		</div>
+		<!-- //Gnb Sub -->
+
+		
+		<div class="main_con" style="display:none;">
+			<!-- 
+				2024 검색 리뉴얼 진행하면서 메인 검색 영역 제거
+				분리되어 있던 메인과 헤더의 검색어 입력 영역을 통합하여 사용
+				리뉴얼 전 .main_con 소스 확인 https://devprj2-www.shinhancard.com/pconts/html/main_bak240816.html
+			-->
+		</div>
+
+		<!-- Fullmenu -->
+		<div id="fullMenuWrap" class="fullMenu_wrap">
+			<div class="fullMenu" data-plugin-class="is_sigin:login=='Y'">
+				<div class="fullMenu_focus" role="text" tabindex="0">전체메뉴 팝업영역</div>
+				<div class="fullMenu_header">
+					<!-- 유틸리티 -->
+					<div class="fullMenu_util">
+						<button type="button" class="btn_home" data-plugin-click="mMenu.goHome()"><span class="blind">신한카드 홈</span></button>
+						<!-- 로그인여부 노출설정은 상단 is_sigin 로 제어 -->
+						<!-- 로그인시 노출 -->
+						<button type="button" class="btn_user" data-plugin-click="gotoInternalLink()"><span class="blind">마이페이지</span></button>
+						<button type="button" class="btn_sigout" data-plugin-click="mMenu.logout()"><span class="blind">로그아웃</span></button>
+						<!-- //로그인시 노출 -->
+						<!-- 비로그인시 노출 -->
+						<button type="button" class="btn_join" data-plugin-click="mMenu.goLink('/mob/MOBFM003N/MOBFM003C01.shc')"><span class="blind">회원가입</span></button>
+						<button type="button" class="btn_sigin" data-plugin-click="mMenu.login()"><span class="blind">로그인</span></button>
+						<!-- //비로그인시 노출 -->
+                      	<!-- 2022-07 추가 앱에서만 노출 -->
+						<button type="button" class="btn_setup" data-plugin-visible="isApp == 'Y'" data-plugin-click="mMenu.goLink('/mob/MOBFM179N/MOBFM179R01.shc')"><span class="blind">설정</span></button>
+						<!-- //2022-07 추가 앱에서만 노출 -->
+					</div>
+					<!-- //유틸리티 -->
+					<!-- 접속자정보 -->
+					<div class="fullMenu_user">
+						<div class="userState_wrap">
+							<div class="mySub_top">
+								<div class="left A03">
+									<span class="sinceDate sb_color03" data-plugin-text="psnMsg.message" role="text">Since 2008</span>
+									<p class="userLevel"><em data-plugin-text="userName">김신한</em>님 <b class="level" data-plugin-text="psnMsg.level">프리미어</b></p>
+									<span class="recent_date"  data-plugin-text="psnMsg.loginTime">최근접속 2019.12.05 18:23</span>
+									<p class="option"><a href="/mob/MOBFM016N/MOBFM016C01.shc" class="link">회원정보변경</a></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- //접속자정보 -->
+					<!-- 사업자별탭메뉴 영역 -->
+					<div class="tab_nav global_nav">
+						<ul class="tab_list" role="tablist">
+							<li role="none" class="current"><a href="#globalTabCont_1" role="button" title="선택됨"><span>개인</span></a></li>
+							<li role="none"><a href="#globalTabCont_2" role="button" data-plugin-click="gotoLink('corp')" title="새창열림"><span>법인</span></a></li>
+							<li role="none"><a href="#globalTabCont_2" role="button" data-plugin-click="gotoLink('mycar')" title="새창열림"><span>마이카</span></a></li>
+							<!-- 개인사업자 삭제 -->
+							<!--<li role="none"><a href="#globalTabCont_2" role="tab" data-plugin-click="gotoLink('hppbiz')"><span>개인사업자</span></a></li> -->
+						</ul>
+					</div>
+					<!-- //사업자별탭메뉴 영역 -->
+				</div>
+				
+				<!-- 2022-07 최근이용메뉴2 추가 -->
+				<div class="gnb-fav-menu">
+					<div class="inner">
+						<div class="tit">최근 이용 메뉴</div>
+						<!-- 로그인 전 또는 최근 이용메뉴가 없을시 -->
+						<div class="fav-text1" id="gnbFavSwiper2NoLogin" style="display:none;">로그인하고 최근 이용한 메뉴를 확인해 보세요.</div>
+						<div class="fav-text1" id="gnbFavSwiper2NoData" style="display:none;">최근 이용한 메뉴가 없어요.</div>
+						<!-- // 로그인 전 또는 최근 이용메뉴가 없을시 -->
+						<!-- 로그인 후 최근 이용메뉴 있을 시 -->
+						<div id="gnbFavSwiper2" class="gnb-fav-swiper" style="display:none;">
+							<button type="button" class="swiper-button-prev" tabindex="0" role="button"  aria-disabled="true"><span class="blind">이전</span></button>
+							<div class="swiper-container">
+								<ul class="swiper-wrapper" id="gnbFavSwiper2Ui">
+								</ul>
+							</div>
+							<button type="button" class="swiper-button-next" tabindex="0" role="button" aria-disabled="false"><span class="blind">다음</span></button>
+						</div>
+						<!-- //로그인 후 최근 이용메뉴 있을 시 -->
+					</div>
+				</div>
+		  
+				<!-- 탭메뉴 영역 -->
+				<div class="tab_nav fullMenu_nav">
+					<ul class="tab_list" role="tablist">
+						<li role="none" class="current"><a href="#fullMenuTabCont_1" id="fullMenuTabNav_1" aria-controls="fullMenuTabCont_1" role="tab" title="선택됨"><span>자주찾는 메뉴</span></a></li>
+						<li role="none"><a href="#fullMenuTabCont_2" id="fullMenuTabNav_2" aria-controls="fullMenuTabCont_2" role="tab"><span>전체메뉴</span></a></li>
+					</ul>
+				</div>
+				<!-- //탭메뉴 영역 -->
+				<!-- 탭본문 영역 -->
+				<div class="tab_body fullMenu_body">
+					<!-- 탭내용_자주찾는메뉴 -->
+					<div id="fullMenuTabCont_1" class="tab_content current" role="tabpanel" aria-labelledby="fullMenuTabNav_1" data-plugin-cms="/pconts/html/common/layout_allmenu_quick.html">
+					</div>
+					<!-- //탭내용_자주찾는메뉴 -->
+					<!-- 탭내용_전체메뉴 -->
+					<div id="fullMenuTabCont_2" class="tab_content" role="tabpanel" aria-labelledby="fullMenuTabNav_2">
+						<div id="allMenuTopSearch" class="allmenu_nav_bg" aria-hidden="true"><!-- 스크롤영역때문에 빈태그로 배경처리  --></div>
+						<div class="allmenu_nav_wrap">
+							<div class="allmenu_inner">
+							
+								<!-- 탭메뉴 영역 -->
+								<div id="haedAllMenuNav" class="tab_nav allmenu_nav">
+									<button type="button" class="swiper-button-prev" role="button"><span class="blind">이전</span></button>
+									<div class="swiper-container">
+										<ul id="tabSelectedCheck" class="tab_list swiper-wrapper" role="tablist" aria-orientation="vertical">
+										</ul>
+									</div>
+									<button type="button" class="swiper-button-next" role="button"><span class="blind">다음</span></button>
+									<!-- 기타링크 영역 -->
+		<!-- 							<div class="allmenu_etc"> -->
+										<!--<a href="#" role="button">신한카드<br>송금 서비스 오픈</a>-->
+		<!-- 							</div> -->
+									<!-- //기타링크 영역 -->
+								</div>
+								<!-- //탭메뉴 영역 -->
+								<!-- 탭본문 영역 -->
+								<div class="tab_body allmenu_body">
+								</div>
+								<!-- //탭본문 영역 -->
+							</div>
+						</div>
+					</div>
+					<!-- //탭내용_전체메뉴 -->
+				</div>
+				<!-- //탭본문 영역 -->
+				<button type="button" aria-controls="fullMenuWrap" class="fullMenu_closer" data-plugin-click="mMenu.close()"><span>전체메뉴 닫기</span></button>
+			</div>
+		</div>
+		<!-- //Fullmenu default-->
+
+
+		<!-- 221123 퀵서치 수정 -->
+		<div id="quickSrch" class="quickSrch_wrap quickSrch2024"><!-- 24.08.23 quickSrch2024 추가 -->
+			<div class="quickSrch_inner">
+				<div class="quickSrch">
+					<div class="srch_input_wrap t1">
+						<button type="button" class="btn_back" data-plugin-click="srch.close()"><span>뒤로가기</span></button>
+						<label for="totalSrchQuck" class="label_srch"><i class="ico_srch">검색</i></label>
+						<input type="text" id="totalSrchQuck" placeholder="" class="js_autoComplete" maxlength="200">
+						<button type="button" class="btn_clear hide"><span>입력창 초기화</span></button>
+						<button type="button" class="srch_ico" style="display:none;" aria-labal="검색"></button>
+						<span class="line" aria-hidden="true"></span>
+					</div>
+					<div class="autoComplete_wrap ac2022">
+						<div class="ac_scroll">
+							<div data-plugin-visible="srch.lstKind == 'late'">
+								<!-- 최근검색어 목록 -->
+								<div class="ac_menu latest">
+									<div class="ac_title_wrap">
+										<p class="ac_title"><strong>최근 검색어</strong></p>
+										<div class="latest-form" data-plugin-visible="srch.lstKind==late">
+											<div class="latest-label">최근 검색어 저장</div>
+											<button type="button" class="ac_btn_text autoSave" aria-pressed="true" title="레이어로 열림" data-plugin-click="srch.autoLate()" data-plugin-visible="srch.autoLate == '자동 저장 끄기'"><span>ON</span></button>
+											<button type="button" class="ac_btn_text autoSave off" aria-pressed="false" title="레이어로 열림"data-plugin-click="srch.autoLate()" data-plugin-visible="srch.autoLate == '자동 저장 켜기'"><span>OFF</span></button>
+										</div>
+									</div> 
+		
+									<div class="ac_nodata" data-plugin-visible="srch.autoLate == '자동 저장 켜기'">
+										<p>최근 검색어 저장이 꺼져 있습니다.</p>
+									</div>
+		
+									<div data-plugin-visible="srch.autoLate == '자동 저장 끄기'">
+										<div class="autoComplete_swiper">
+											<div class="swiper-container swiper-container-initialized swiper-container-horizontal auto">
+												<button type="button" class="nav-button-prev" tabindex="0" role="button" title="이전 슬라이드 보기">
+													<span class="blind">이전</span>
+												</button>
+												<button type="button" class="nav-button-next" tabindex="0" role="button" title="다음 슬라이드 보기">
+													<span class="blind">다음</span>
+												</button>
+												<ul class="swiper-wrapper ac_list" data-plugin-each="srch.lateItems">
+													<li class="swiper-slide ac_item">
+														<button type="button" class="ac_btn_keyword" data-plugin-click="srch.setLateText()" title="{{=$data.keyword}} 검색결과 페이지로 이동" data-plugin-item="srch.lateItems,0"><span>{{=$data.keyword}}</span></button>
+														<button type="button" class="ac_btn_remove" data-plugin-click="srch.lateDel()" title="최근검색어 {{=$data.keyword}} 삭제" data-plugin-item="srch.lateItems,0"><span>삭제</span></button>
+													</li>
+												</ul>
+												<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+											</div>
+										</div>
+										<p class="nolately" data-plugin-visible="srch.lateItems.length == 0">최근 검색한 내용이 없습니다.</p>
+									</div>
+								</div>
+								<!-- //최근검색어 목록 -->
+		
+								<!-- 지금 많이 찾고 있어요 -->
+								<div class="ac_menu look">
+									<p class="ac_title"><strong>지금 많이 찾고 있어요</strong></p>
+									<ul class="ac_list" data-plugin-each="srch.freqItems" data-plugin-visible="srch.freqItems.length == 0">
+										<!-- API에 데이터가 없는 경우에만 기본 노출 -->
+										<li class="ac_item"><a href="/mob/MOBFM004N/MOBFM004R0201.shc?query=즉시결제" class="ac_btn_keyword"><span>즉시결제</span></a></li>
+										<li class="ac_item"><a href="/mob/MOBFM004N/MOBFM004R0201.shc?query=이용한도" class="ac_btn_keyword"><span>이용한도</span></a></li>
+										<li class="ac_item"><a href="/mob/MOBFM004N/MOBFM004R0201.shc?query=명세서" class="ac_btn_keyword"><span>명세서</span></a></li>
+										<!-- // API에 데이터가 없는 경우에만 기본 노출 -->
+									</ul>
+									<ul class="ac_list" data-plugin-each="srch.freqItems" data-plugin-visible="srch.freqItems.length != 0">
+										<li class="ac_item badge-{{=$data.displayType}}"><a href="/mob/MOBFM004N/MOBFM004R0201.shc?query={{=$data.searchText}}" class="ac_btn_keyword" title="{{=$data.displayText}}"><span>{{=$data.displayText}}</span></a></li>
+									</ul>
+								</div>
+								<!-- //지금 많이 찾고 있어요 -->
+		
+								<!-- 24.08.23 사용안함 -->
+								<!-- 자주 찾는 검색어 목록 -->
+								<!-- <div class="ac_menu often">
+									<p class="ac_title"><strong>자주 찾는 검색어</strong></p>
+									<ul class="ac_list" data-plugin-each="srch.freqItems">
+										<li class="ac_item"><button type="button" class="ac_btn_keyword" data-plugin-click="srch.setLateText()" title="{{=$data.keyword}}"><span>{{=$data.keyword}}</span></button></li>
+									</ul>
+								</div> -->
+								<!-- //자주 찾는 검색어 목록 -->
+								
+								<!-- 추천 검색어 목록 -->
+								<!-- <div class="ac_menu recommend">
+									<p class="ac_title"><strong>추천 검색어</strong></p>
+									<ul class="ac_list" data-plugin-each="srch.recommendItems">
+										<li class="ac_item"><button type="button" class="ac_btn_keyword" data-plugin-click="srch.setLateText()" title="{{=$data.keyword}}"><span>{{=$data.keyword}}</span></button></li>
+									</ul>
+								</div> -->
+								<!-- //추천 검색어 목록 -->
+								<!-- //24.08.23 사용안함 -->
+		
+								<!-- 24.08.23 추가 -->
+								<div class="ac_bottom">
+									<!-- 이런 정보를 찾고 계세요? -->
+									<div class="ac_menu info">
+										<p class="ac_title"><strong>이런 정보를 찾고 계세요?</strong></p>
+										<div id="quickSrchInfoSwiper">
+											<button type="button" class="nav-button-prev" role="button" title="이전 슬라이드 보기">
+												<span class="blind">이전</span>
+											</button>
+											<button type="button" class="nav-button-next" role="button" title="다음 슬라이드 보기">
+												<span class="blind">다음</span>
+											</button>
+											<div class="swiper-container">
+												<ul class="swiper-wrapper" data-plugin-each="srch.recommendItems" >
+													<!-- AI MY HOT 배지 추가시 badge-ai, badge-my, badge-hot 클래스 추가 -->
+													<li class="swiper-slide badge-{{=$data.displayType}}">
+														<a href="{{=$data.pathUrl}}" class="swiper-link">
+															<div class="info-text ellipsis3">{{=$data.displayText}}</div>
+															<div class="info-img"><img src="/pconts/images/dx/com/icon_H_sch_{{=$data.iconType}}.svg" alt=""></div>
+														</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<div class="swiper-bottom">
+											<div class="quickSrch-swiper-controls">
+												<button id="btnPlay" type="button" aria-label="재생" disabled></button>
+												<button id="btnPause" type="button" aria-label="일시정지"></button>
+											</div>
+											<div class="quickSrch-swiper-pagination"></div>
+										</div>
+									</div>
+									<!-- //이런 정보를 찾고 계세요? -->
+		
+									<!-- 추천 배너 -->
+									<!-- 24.10.15 사용안함
+									<div class="recommend-banner" data-plugin-visible="srch.autoBanner.length == 0">
+										<a href="#" class="recommend-banner-link">
+											<div class="recommend-banner-img"><img src="/pconts/images/dx/com/icon_banner_default.svg" alt=""></div>
+											<div class="recommend-banner-text ellipsis">미니게임 한판하고 포인트 받자! 미니게임 한판하고 포인트 받자! 미니게임 한판하고 포인트 받자!</div>
+										</a>
+									</div>
+									<div class="recommend-banner" data-plugin-visible="srch.autoBanner.length != 0" data-plugin-each="srch.autoBanner">
+										<a href="{{=$data.pathUrl}}" class="recommend-banner-link">
+											<div class="recommend-banner-img"><img src="{{=$data.imageUrl}}" alt=""></div>
+											<div class="recommend-banner-text ellipsis">{{=$data.displayText}}</div>
+										</a>
+									</div> -->
+									<!-- //추천 배너 -->
+								</div>
+								<!-- //24.08.23 추가 -->
+								
+							</div>
+							<div data-plugin-visible="srch.lstKind == 'ark'" hidden>
+								<!-- 연관검색어 목록 -->
+								<div class="ac_menu associate" data-plugin-visible="srch.autoArk == '자동완성 끄기'">
+									<!-- 연관검색 배너 추가 / 최대 2개 -->
+									<ul class="ac_list_banner" data-plugin-visible="srch.autoBanner.length > 0" data-plugin-each="srch.autoBanner">
+										<li class="ac_item">
+											<img src="/pconts/images/banner/search_{{=$data.category}}.png" alt="{{=$data.category}}" class="ac_list_ico">
+											<button type="button" class="ac_btn_keyword srch" data-plugin-click="srch.arkBanner('{{=$data.bannerUrl}}')" title="{{=$data.keyword}} 페이지로 이동"><span>{{=$data.highlight}}</span></button>
+										</li>
+									</ul>
+									<!-- // 연관검색 배너 추가 / 최대 2개 -->
+								
+									<ul class="ac_list" data-plugin-visible="srch.arkItems.length > 0" data-plugin-each="srch.arkItems">
+										<li class="ac_item">
+											<button type="button" class="ac_btn_keyword srch" title="{{=$data.onlyKeyword}} 검색결과 페이지로 이동" data-plugin-click="srch.setArkText('1')"><span>{{=$data.keyword}}</span></button>
+											<button type="button" class="ac_btn_srch" data-plugin-click="srch.setArkText('')"><span>키워드를 검색어에 입력</span></button>
+											<span>{{=$data.badgeTag}}</span>
+										</li>
+									</ul>
+								</div>
+								<!-- //연관검색어 목록 -->
+							</div>
+						</div>
+						<div class="ac_option">
+							<div class="ac_option_right">
+								<button type="button" class="ac_btn_text cancel" aria-controls="quickSrch" data-plugin-click="srch.close();"><span>닫기</span></button>
+							</div>
+						</div>
+					</div>
+					<script>
+						// 221124 스크립트 전 라인 수정
+                        $(function() {
+                            // 최근검색어 스와이퍼
+                            var autoCompleteSwiper = new Swiper('.autoComplete_swiper .swiper-container', {
+                                autoplay: false,
+                                slidesPerView: 'auto',
+                                navigation: {
+                                    nextEl: '.autoComplete_swiper .nav-button-next',
+                                    prevEl: '.autoComplete_swiper .nav-button-prev',
+                                },
+                                watchSlidesVisibility: true,
+                                on: {
+                                    init: function () {
+                                        ui.swiperAccess($('.autoComplete_swiper .swiper-container'), 'auto');
+                                    },
+                                    slideChangeTransitionStart: function () {
+                                        ui.swiperAccess($('.autoComplete_swiper .swiper-container'), 'auto');
+                                    },
+                                    resize: function () {
+                                        ui.swiperAccess($('.autoComplete_swiper .swiper-container'), 'auto');
+										if ($(window).width() > 1100) { this.slideTo(0, 0) }
+                                    },
+                                    observerUpdate: function () {
+                                        if($('.autoComplete_swiper .swiper-container .swiper-slide-visible').attr('aria-hidden') === "true") {
+                                            ui.swiperAccess($('.autoComplete_swiper .swiper-container'), 'auto');
+                                        }
+                                    }
+                                },
+                                touchRatio:0,
+                                observer: true,
+                                obsereParents: true,
+                                breakpoints: {
+                                    1100: {
+                                        touchRatio:1,
+                                    }
+                                },
+                            });
+                        
+                            // $(window).on('resize', function() {
+                            //     if ($(window).width() > 1100) {
+                            //         if(!autoCompleteSwiper) return; 
+                            //         autoCompleteSwiper.slideTo(0, 0)
+                            //     }
+                            // });
+                            // $('#query, #mainSearch_mo, #totalSrchQuck').on('click',function() {
+                            //     window.dispatchEvent(new Event('resize'));
+                            // })
+                    
+                            var quickSerchDimmer = null;
+                            var quickSerchCloseBtn = null;
+                    
+                            // 딤드처리 되어있을 때 검색창, esc 누르면 닫히게
+                            document.addEventListener('keyup', function(e) {
+                                quickSerchDimmer = document.querySelector('.quickSrch_dimmer.is_active');
+                                if(!quickSerchDimmer) return;
+                                if(quickSerchDimmer && e.keyCode === 27) {
+                                    quickSerchCloseBtn = document.querySelector('.ac_btn_text.cancel');
+                                    if(quickSerchCloseBtn) quickSerchCloseBtn.click();
+                                    if(!dxHandleAccPopOff) return; dxHandleAccPopOff();
+                                };
+                            })
+                    
+                            $('.ac_btn_text.cancel').on('click', function() {
+                            if(!dxHandleAccPopOff) return;
+                            dxHandleAccPopOff();
+                            })
+                            $('.dxAccBox').on('click focus', function() {
+                                if(!dxHandleAccPopOn) return;
+                                dxHandleAccPopOn();
+                            }) 
+                            $('.quickSrch_dimmer').on('click', function(e) { 
+                                var cancelBtn = document.querySelector('.ac_btn_text.cancel');
+                                cancelBtn.click(); 
+                                if(!dxHandleAccPopOff) return;
+                                    dxHandleAccPopOff();
+                            });
+                        });
+						// 221124 스크립트 전 라인 수정
+					</script>
+				</div>
+			</div>
+			<div class="quickSrch_dimmer" aria-hidden="true" data-plugin-click="srch.close()"></div>  <!-- // 221104 data-plugin-click="srch.close() 추가 -->
+		</div>
+        <!-- //221123 퀵서치 수정 -->
+
+
+		<div class="quick_fixed">
+			<div class="quick_top"><a href="#wrap" class="top"><span class="blind">페이지 처음으로 이동</span></a></div>
+			<div class="quick_talk" data-plugin-visible="isArsLogin">
+				<a href="#" data-plugin-click="callArs()" class="fani"><span class="blind">상담원연결</span></a>
+			</div>
+			<!-- 챗봇-->
+			<div id="main_chatbot"></div>
+			<script>
+				$('#main_chatbot').load('chatbot.html?v=1');
+			</script>
+			<!--// 챗봇 -->
+		</div>
+		<!-- //빠른검색 -->
+	</header>
+    <!-- //header -->
+
+    <!-- container -->
+    <div id="container">
+        <!-- contents -->
+        <section id="shcMain" class="contents" data-bind-view="MOBFMMAIN">
+			<!-- 메인 검색  -->
+			<div class="main_search">
+				<!-- PC용 -->
+				<div id="searchWideWrap" class="search-wide-wrap">
+					<div class="input_wrap pc_only">
+						<!-- 검색 통합 전 피씨 메인 - 검색 팝업 열기 버튼
+						<button type="button"class="main-search-btn" aria-label="검색 팝업 열기"></button> -->
+						<button type="button" id="btnMainSearchPc" class="main-search-btn" aria-label="검색 팝업 열기" onclick="ui.quickSrch.open('#totalSrchQuck')"></button>
+						<!-- form 사용하지 않음 -->
+						<form action="javascript:void(0);" aria-hidden="true">
+							<label for="mainSearch_pc">
+								<span class="blind">검색</span>
+								<!-- 검색 통합 전 피씨 메인 - .js_autoComplete 로 포커스를 보내 노출 용도로 사용(포커스가 가야만 히든이 풀림)
+								<input type="search" name="" id="mainSearch_pc" placeholder="" class="js_autoComplete" maxlength="200"> -->
+							</label>
+						</form>
+					</div>
+					<div class="main-search-banner"></div>
+				</div>
+				<!-- //PC용 -->
+				<!-- Mobile용 -->
+				<div id="searchMinWrap" class="search-min-wrap">
+					<div class="input_wrap mo_only">
+						<button type="button" id="mainSearch_mo" class="main-search-btn js_autoComplete" aria-label="검색 팝업 열기"></button>
+					</div>
+				</div>
+				<!-- //Mobile용 -->
+
+				<ul class="main_search_word" data-plugin-each="recommendMenuSearchList" style="display:none;">
+					<li><a href="#none" data-plugin-click="gotoSearch('{{=$data.keyword}}')">&#35;{{=$data.keyword}}</a></li>
+				</ul>
+			</div>
+			<!-- //메인 검색 -->
+
+			<div class="contents_heading h_wrap hidden-text">
+				<h1 class="h_title38">신한카드</h1>
+				<p class="s-text">고객에게 딱 맞는 라이프스타일, 신한카드만의 초개인화 서비스를 이용해 보세요. 새로운 세상을 여는 신한카드와 함께 나에게 꼭 맞는 금융생활을 누려보세요.</p>
+			</div>
+          	
+          	<!-- 2212 신카앱에서만 사용 -->
+            <div class="shapp_playgo" style="display:none;">
+                <div class="ly_inner">
+                    <p class="txt">신한카드 앱에서 이용하던 모든 서비스는<br> <b>2022년 12월말 중단</b>됩니다.</p>
+                    <p class="txt"><b>이제 신한플레이 앱을 이용해주세요.</b></p>
+                    <div class="btn_wrap btn-wrap-dx align_c">
+                        <a href="https://shcard.io/SHpLay" class="btn default blue" role="button" onclick="return openAppUrl(this.href), false;" target="_blank" title="새창으로 열림"><span>신한플레이 앱 바로가기</span></a>
+                    </div>
+                </div>
+            </div>
+            <!-- //2212 신카앱에서만 사용 -->
+
+            <!-- 추천카드 -->
+			<div data-include="/pconts/html/admMain/inc/SHCRB0_INC2_A.html"></div>
+			<!-- //추천카드 -->
+          
+			<!-- 배너 -->
+            <div id="shcMainSec2" class="m-section no-line">
+				<div class="m-article">
+					<div class="m-art-head hidden-text">
+						<h2 class="m-tit1">이벤트</h2>
+					</div>
+					<!-- 어드민 이벤트 배너 -->
+					<div class="main_banner">
+						<div id="mainEventSwiper1" class="event_bnr event_mainVisual"></div>
+					</div>
+<!-- 이벤트 배너 템플릿 script (개발) -->
+<script type="ejs/template" id="tplEventMain">
+	<button type="button" class="swiper-button-prev"><span class="blind">이전</span></button>
+	<button type="button" class="swiper-button-next"><span class="blind">다음</span></button>
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+			{{ for(var i=0;i<events.length;i++) { var event = events[i]; }}
+			<div class="swiper-slide" >
+				<div class="event-cont" data-color="{{=event.bgColor}}" data-target="mainBgArea{{=i+1}}" style="background-color:{{=event.bgColor}};">
+					<a href="javascript:;" class="a-block-all" onclick="goEventLink('{{=event.link}}', '{{=event.linkType}}')">
+						<div class="img-sec" aria-hidden="true" style="background-image:url({{=event.image}});" ><!-- {{=event.alt}} --></div>
+						<div class="text-sec">
+							<div class="text1">{{=event.title}}</div>
+							<div class="text2">{{=event.text}}</div>
+						</div>
+					</a>
+				</div>
+			</div>
+			{{ } }}
+		</div>
+	</div>
+	<div class="swiper-controls is_played">
+		<button type="button" class="swiper-button-play"><span class="blind">재생</span></button>
+		<button type="button" class="swiper-button-pause"><span class="blind">정지</span></button>
+		<div class="swiper-pagination"></div>
+	</div>
+</script>
+<!-- //이벤트 배너 템플릿 script (개발) -->
+<!-- 이벤트 배너 swiper -->
+<script>
+	var indexEventSwiper='';
+	//<![CDATA[
+	// 메인 배너 스와이퍼
+	function mainEventSwiper1(elm){
+		if($(elm + ' .swiper-slide').length>1){
+			var indexEventSwiper = new Swiper(elm + ' .swiper-container', {
+				autoplay: {
+					delay: 4000,
+					disableOnInteraction: false,
+				},
+				loop: true,
+				spaceBetween: 0,
+				slidesPerView: 3,
+				navigation: {
+					nextEl: elm + ' .swiper-button-next',
+					prevEl: elm + ' .swiper-button-prev',
+				},
+				pagination: {
+					el: elm + ' .swiper-pagination',
+					clickable:true,
+				},
+				observer: true,
+				obsereParents: true,
+				watchSlidesVisibility: true,
+				on: {
+					init: function(){ 
+						ui.swiperAccess($(elm + ' .swiper-container'), 'auto');
+					},
+					slideChangeTransitionStart: function(){ 
+						ui.swiperAccess($(elm + ' .swiper-container'), 'auto');
+					},
+					resize: function(){ 
+						ui.swiperAccess($(elm + ' .swiper-container'), 'auto');
+					},
+				},
+				breakpoints: {
+					1100: { 
+						spaceBetween: 0,
+						slidesPerView: 1, 
+						allowTouchMove: true,
+						loop: true
+					}
+				}
+			});
+			// 스와이퍼 재생,일시정지 버튼
+			controllswiper(elm + ' .swiper-button-pause', elm + ' .swiper-button-play', indexEventSwiper)
+
+			function controllswiper(pause, play, target) {
+				var $pause = $(pause);
+				var $play = $(play);
+				$play.hide();
+				$pause.click(function() {
+					target.autoplay.stop();
+					$pause.hide();
+					$play.show();
+					$play.focus();
+				});
+				$play.click(function() {
+					target.autoplay.start();
+					$pause.show();
+					$play.hide();
+					$pause.focus();
+				})
+			}
+		}else{
+			$(elm).addClass('no-swiper')
+		}
+	}
+	
+	var evtSwiperInterval=setInterval(function(){
+		if($('#mainEventSwiper1').find('.swiper-container').length>0){
+			mainEventSwiper1('#mainEventSwiper1')
+			clearTimeout(evtSwiperInterval)
+		}
+	},10)
+//]]>
+</script>
+<!-- //이벤트 배너 swiper -->					
+					<!-- //어드민 이벤트 배너 -->
+				</div>
+			</div>
+            <!-- //배너 -->
+
+			<!-- 금융 -->
+			<div data-include="/pconts/html/admMain/inc/SHCRB0_INC3.html"></div>
+			<!-- //금융 -->
+
+            <!-- 자주찾는 메뉴 -->
+			<div data-include="/pconts/html/admMain/inc/SHCRB0_INC1.html"></div>
+			<!-- //자주찾는 메뉴 -->
+			
+			<!-- 공지 -->
+			<div id="shcMainSec5" class="m-section line">
+				<div class="m-article">
+					<!-- 기존 소스 -->
+					<!-- 
+					<div class="main-notice-wrap">
+						<div class="main-notice">
+							<div class="tit-sec">
+								<h3 class="m-tit3-a"><a href="#main_notice1" class="tab-trigger on" onclick="fnNoticeTab(this);return false;">공지</a></h3>
+								<a href="/mob/MOBFM164N/MOBFM164R01.shc" class="c-link1-a more">전체보기</a>
+							</div>
+							<div  id="main_notice1" class="m-base-list2">
+								<ul class="list-row">
+									
+								</ul>
+							</div>
+						</div>
+							
+						<div class="main-notice">
+							<div class="tit-sec">
+								<h3 class="m-tit3-b"><a href="#main_notice2" class="tab-trigger" onclick="fnNoticeTab(this);return false;">금융소비자주의경보</a></h3>
+								
+								<a href="/mob/MOBFM164N/MOBFM164R03.shc" class="c-link1-a more" style="display:none;">전체보기</a>
+							</div>
+							<div  id="main_notice2" class="m-base-list2" style="display:none;">
+								<ul class="list-row">
+									
+								</ul>
+							</div>
+						</div>
+					</div>
+					<script>
+						function fnNoticeTab(elm){
+							if(!$(elm).hasClass('on')){
+								$('.tab-trigger').removeClass('on').parent().next('.c-link1-a').hide();
+								$('.m-base-list2').hide()
+								$(elm).addClass('on').parent().next('.c-link1-a').show();
+								$($(elm).attr('href')).show()
+							}
+						}
+					</script>
+					-->
+					<!-- //기존 소스 -->
+					<!-- 피씨에서 노출 -->
+					<div class="main-notice-wrap-pc">
+						<div class="main-notice">
+							<div class="tit-sec">
+								<h3 class="m-tit3">공지</h3>
+							</div>
+							<div class="m-base-list2 main_notice1">
+								
+							</div>
+							<a href="/mob/MOBFM164N/MOBFM164R01.shc" class="c-link1-a more" role="button" aria-label="공지 전체보기"></a>
+						</div>
+							
+						<div class="main-notice">
+							<div class="tit-sec">
+								<h3 class="m-tit3">금융소비자주의경보</h3>
+							</div>
+							<div class="m-base-list2 main_notice2">
+								
+							</div>
+							<a href="/mob/MOBFM164N/MOBFM164R03.shc" class="c-link1-a more" role="button" aria-label="금융소비자주의경보 전체보기"></a>
+						</div>
+					</div>
+					<!-- //피씨에서 노출 -->
+
+					<!-- 모바일에서 노출 -->
+					<div class="main-notice-wrap-mo">
+						<div class="tab_type01">
+							<div class="tab_pull">
+								<ul class="tab_list" role="tablist">
+									<li id="noticeTab01" class="current"><button type="button" role="tab" aria-controls="notice01" aria-selected="true"><span>공지</span></button></li>
+									<li id="noticeTab02"><button type="button" role="tab" aria-controls="notice02" aria-selected="false"><span>금융소비자주의경보</span></button></li>
+								</ul>
+							</div>
+						</div>
+						<div class="tab_wrap">
+							<div class="tab_cont current" role="tabpanel" aria-labelledby="noticeTab01" id="notice01">
+								<div class="m-base-list2 main_notice1">
+
+								</div>
+								<a href="/mob/MOBFM164N/MOBFM164R01.shc" aria-label="공지 전체보기" class="c-link1-a more">전체보기</a>
+							</div>
+							<div class="tab_cont" role="tabpanel" aria-labelledby="noticeTab02" id="notice02">
+								<div class="m-base-list2 main_notice2">
+									
+								</div>
+								<a href="/mob/MOBFM164N/MOBFM164R03.shc" aria-label="금융소비자주의경보 전체보기" class="c-link1-a more">전체보기</a>
+							</div>
+						</div>
+					</div>
+					<!-- //모바일에서 노출 -->
+					
+				</div>
+			</div>
+			<!-- //공지 -->
+        </section>
+        <!-- //contents -->
+    </div>
+    <!-- //container -->
+
+    <!-- footer -->
+	<footer id="footer" data-bind-include="cmmFooter" data-plugin-view="cmmFooter"></footer>
+	<!-- //footer -->
+</div>
+<!-- //wrap -->
+
+<!-- 221123 검색 script 수정 --> 
+<script>
+//<![CDATA[
+
+// 2023 접근성 - 헤더 검색 버튼 숨김처리 2023.03.27
+function headerSearchBtnAccess() {
+	$('.btn_ico_search').attr({'tabindex': -1, 'aria-hidden': true});
+	if($('header').hasClass('is_scrolled')) {
+		$('.btn_ico_search').removeAttr('tabindex aria-hidden');
+	}
+}
+
+$(function(){
+	// 2024.08 기존 header에서 사용중이었던 .main_con을 사용하지 않고 header의 돋보기 버튼으로 띄우는 .srch_input_wrap 을 함께 사용하도록 변경하면서 불필요한 소스 제거
+	// 리뉴얼 전 소스 확인 https://devprj2-www.shinhancard.com/pconts/html/main_bak240816.html
+
+	// 검색 활성시
+	$('#searchWideWrap .main-search-btn').on('click', function(e){
+		dxHandleAccPopOn("main");
+		setTimeout(function() {
+			$('#shcMainSec2 .swiper-button-pause').trigger('click') // 어드민 이벤트 배너 일시정지
+		}, 0)
+	})
+
+	// 모바일 검색 활성화
+	$('.search-min-wrap .main-search-btn').on('click', function(e){
+		if($("body").width() <= 980 || $("body").hasClass("mobile")) {
+			setTimeout(function(){
+				ui.swiperAccess($('.autoComplete_swiper .swiper-container'), 'auto');
+				dxHandleAccPopOn("main");
+			}, 0)
+		}
+	})
+
+	// 돋보기 활성시
+	$('#header .btn_ico_search').click(function(e){
+		dxHandleAccPopOn("main")
+	})
+
+	// 검색창 닫을시
+	$('.ac_btn_text.cancel, .quickSrch_close, .quickSrch_dimmer, #quickSrch .btn_back').click(function(e){
+		$('#shcMainSec2 .swiper-button-play').trigger('click')// 어드민 이벤트 배너 재생
+		dxHandleAccPopOff("main");
+	})
+
+	$('.ac_btn_text.cancel').on('click', function() {dxHandleAccPopOff("main");})
+
+	// 리사이즈시 검색창 디자인 맞춤
+	$(window).on('resize', function() {
+		if ($(window).width() > 1100) {
+			$('#quickSrch').addClass('is_acOnly');
+			$('.shc-index').addClass('pc-search-on');
+		} else {
+			$('#quickSrch').removeClass('is_acOnly');
+			$('.shc-index').removeClass('pc-search-on');
+		}
+	})
+
+	//검색(개발에서받음)
+	retrieveSearchDefault();
+
+	// 2023 접근성 - 헤더 검색 버튼 숨김처리 2023.03.27
+	headerSearchBtnAccess();
+	$(window).scroll(headerSearchBtnAccess);
+});
+//]]>
+</script>
+<!-- //221123 검색 script 수정 --> 
+
+<!-- 팝업관리 -->
+<div id="cmsPopupSys"></div>
+<!-- //팝업관리-->
+<script>
+var mver= new Date().getDate() + '' + (new Date().getHours())
+$('#cmsPopupSys').load('/pconts/html/admMain/inc/SHCRB0_INC4.html?mver='+mver) 
+</script>
+
 <style>
-    /* 2024 검색 리뉴얼 관련 CSS */
-    .shc-index.renew2024 #searchWideWrap {display:block;width:700px;height:64px;margin:60px auto 0;}
-    .shc-index.renew2024 #searchMinWrap {display:none;}
-    /* ... 기타 스타일 ... */
+@media only screen and (max-width: 1099px) {
+	.pc #quickSrch.quickSrch2024 .srch_input_wrap .btn_back,
+	.pc #quickSrch.quickSrch2024 .autoComplete_wrap .ac_option .ac_btn_text {display:block !important;}
+}
 </style>
 
-<!-- 3. 검색 관련 스크립트 수정 -->
-<script>
-$(function(){
-    // 검색 활성시
-    $('#searchWideWrap .main-search-btn').on('click', function(e){
-        dxHandleAccPopOn("main");
-        setTimeout(function() {
-            $('#shcMainSec2 .swiper-button-pause').trigger('click')
-        }, 0)
-    });
-
-    // 모바일 검색 활성화
-    $('.search-min-wrap .main-search-btn').on('click', function(e){
-        if($("body").width() <= 980 || $("body").hasClass("mobile")) {
-            setTimeout(function(){
-                ui.swiperAccess($('.autoComplete_swiper .swiper-container'), 'auto');
-                dxHandleAccPopOn("main");
-            }, 0)
-        }
-    });
-    // ... 기타 스크립트 ...
-});
-</script>
+</body>
+</html>
