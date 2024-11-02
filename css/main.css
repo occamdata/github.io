@@ -1,0 +1,86 @@
+body.training .body-warp {width: 100%;}
+
+.nav-container {width: 1240px; margin: 0 auto; position: relative; display: flex; background-color: #fff; z-index: 999; -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none; justify-content: space-between;}
+.nav-container>ul {display: inline-flex; gap:30px; align-items:center;}
+.nav-container>ul.sns-icons {gap:5px;}
+.nav-item {position: relative; list-style: none;}
+.nav-link {display: block;padding: 14px 20px; color: #333; text-decoration: none; text-align: center;}
+/* .nav-link:hover {background-color: #575757;} */
+.dropdown {display: none; position: absolute; background-color: #333; min-width: 160px; z-index: 1;}
+.dropdown .dropdown-item {list-style: none;}
+.dropdown .dropdown-link {display: block; padding: 12px 16px; color: white; text-decoration: none; text-align: left;}
+.dropdown .dropdown-link:hover {background-color: #575757;}
+.nav-item:hover .dropdown {display: block;}
+.sns-icons li {margin-left: 10px;}
+.sns-icons li a {width: 28px; height: 28px; overflow: hidden; display: block; text-indent: -9999em; background: url(/resources/images/snsImg.png) no-repeat;}
+.sns-icons li.instagram a {background-position: -114px 0;}
+.sns-icons li.blog a {background-position: -190px 0;}
+.sns-icons li.facebook a {background-position: 0px 0;}
+.sns-icons li.youtube a {background-position: -38px 0;}
+
+.mainbanner {width: 100%; height: 540px; overflow: hidden; position: relative;}
+.mainbanner .swiper-slide {width:1200px; margin: 0 auto;text-align: center; }
+.mainbanner .swiper-slide a img {height: 100%;}
+.mainbanner .swiper-slide a {display: block;}
+.mainbanner .swiper-slide a.main_banner_01 {background: #2d72fc;}
+.mainbanner .swiper-slide a.main_banner_02 {background: rgb(251, 242, 243);}
+.mainbanner .bulletCustom { position: absolute; bottom: 20px !important; text-align: center; transition: .3s opacity; transform: translate3d(0, 0, 0); z-index: 10;}
+.mainbanner .bulletCustom .swiper-pagination-bullet { background: #d8d8d8; opacity: 0.7; width: 10px; height: 10px;}
+.mainbanner .bulletCustom .swiper-pagination-bullet-active { background: #fc6d35; opacity: 0.7;}
+.mainbanner .btnCustom { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 54px; height: 54px;font-size: 20px}
+.mainbanner .btnCustom.prev {left: 0;}
+.mainbanner .btnCustom.next {right: 0;}
+.edu_category {width: 1240px; margin: 30px auto 0;}
+.edu_category ul {padding: 10px 0 30px 0; cursor: default;}
+.edu_category ul li {display: inline-block; position: relative; line-height: 25px; margin: 0 30px;}
+.edu_category ul li:first-child {margin-left: 0;}
+.edu_category ul li span {font-size: 18px; color: #000; cursor: pointer; display: inline-block; padding: 2px 5px;}
+.edu_category ul li.active span,.edu_category  .recmd ul li span:hover {color: #fc6d35; border-bottom: 3px solid #fc6d35; font-weight: bold;}
+
+
+.edu_category .wrap>div{overflow: hidden; position: relative; margin: 0 auto; display: flex; gap: 40px 30px; flex-wrap: wrap;}
+.edu_category .wrap>div:not(.active) {display: none;}
+.edu_category .wrap .cell {position: relative; width: calc(25% - 23px);}
+.edu_category .wrap .cell .img {overflow: hidden; border-radius: 12px;}
+.edu_category .wrap .cell .img img {width: 100%; height: auto;}
+.edu_category .wrap .cell .info .type {font-size: 14px; color: #999; margin-bottom: 8px;}
+.edu_category .wrap .cell .info .subject {text-overflow: ellipsis;word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 22px; font-size: 16px; font-weight: 500; color: #555; margin-bottom: 8px;}
+.edu_category .wrap .cell .info .pay_grade .price {line-height: 20px; font-size: 18px; font-weight: bold; color: #e74c3c; letter-spacing: -1px; text-align: right;}
+ .edu_category .wrap .cell .info .pay_grade .discount_price span {display: block; color: #888; font-size: 14px; text-decoration: line-through; font-weight: normal;}
+ .edu_category .wrap .cell .info .pay_grade .discount_price {line-height: 20px; font-size: 18px; font-weight: bold; color: #e74c3c; letter-spacing: -1px; text-align: right;}
+
+.form_wrap {padding: 40px 0;display: flex; justify-content: center; align-items: center;}
+.container { background-color: #f4f4f4; padding: 20px 40px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); width: 1240px; max-width: 90%;}
+.form-header {text-align: center; margin-bottom: 20px;}
+.form-header .form_icon {width: 80px; height: 80px; font-size: 80px;}
+.form-header h1 {font-size: 1.5em; margin: 10px 0;}
+.form-header p {color: #777;}
+.form-group {margin-bottom: 20px;}
+.form-group label {display: inline-block; margin-bottom: 5px; width: 140px;}
+.form-group label b {color:#e74c3c;}
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group input[type="email"],
+.form-group input[type="url"] {width: calc(100% - 185px); height: 30px; padding: 10px; margin-left: 10px; border:0; border-radius: 5px; background: #fff;}
+.form-group p {display: inline-block; width: calc(100% - 185px); background: #fff; font-size: 15px; line-height: 18px; color: #777; padding: 10px; margin-left: 10px; }
+.form-group.agreedChk {text-align: center;}
+.form-group.agreedChk label {width: auto;}
+
+.form-group input[type="checkbox"] {margin-right: 10px;}
+
+button {width: 100%; padding: 15px; background-color: #333; color: #fff; border: none; border-radius: 5px; font-size: 1em; cursor: pointer;}
+
+button:hover {background-color: #555;}
+
+ .customer-num-box {margin-top: 20px; display: flex; justify-content: center; align-items: center; background-color: #f2f2f2;}
+ .customer-num-box ul {list-style: none; padding: 0; margin: 0; display: flex; }
+ .customer-num-box li {display: flex; align-items: center; padding: 20px;}
+ .customer-num-box li:last-child{border-left: 1px solid #ccc;}
+ .customer-num-box li a {display: flex; align-items: center; text-decoration: none;color: black;}
+ .customer-num-box li .icon {display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; margin-right: 10px; border-radius: 50%; line-height: 40px;}
+ .customer-num-box li.kakaoChat .icon {background: yellow;}
+ .customer-num-box li.tel .icon {background:#bbb;}
+ .customer-num-box li .text {display: flex; flex-direction: column; }
+ .customer-num-box li .text strong {font-size: 1.2em;}
+ .customer-num-box li .text em {font-style: normal;margin-left: 5px;}
+ .customer-num-box li .text span {font-size: 0.9em; color: gray;}
